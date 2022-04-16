@@ -1,0 +1,74 @@
+{
+  "name": "fabriek-project",
+  "description": "Simple and extensible object factory.",
+  "private": true,
+  "scripts": {
+    "postinstall": "preconstruct dev",
+    "prepare": "simple-git-hooks",
+    "build:watch": "preconstruct watch",
+    "build": "preconstruct build",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:dist": "yarn build && jest -c jest.dist.js --no-cache --ci --runInBand",
+    "test:coverage": "jest --coverage --no-cache --ci --runInBand",
+    "changeset": "changeset",
+    "version-apply": "changeset version",
+    "release": "yarn build && changeset publish"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint . --fix",
+      "git add"
+    ]
+  },
+  "simple-git-hooks": {
+    "post-commit": "git update-index --again",
+    "pre-commit": "yarn lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karibash/fabriek.git"
+  },
+  "author": "Karibash",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Karibash/fabriek/issues"
+  },
+  "homepage": "https://github.com/Karibash/fabriek",
+  "workspaces": [
+    "examples/*",
+    "packages/*"
+  ],
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@changesets/changelog-github": "^0.4.4",
+    "@changesets/cli": "^2.22.0",
+    "@preconstruct/cli": "^2.1.5",
+    "@swc/core": "^1.2.165",
+    "@swc/jest": "^0.2.20",
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "eslint": "^8.13.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^27.5.1",
+    "jest-styled-components": "^7.0.8",
+    "jest-watch-typeahead": "^1.0.0",
+    "lint-staged": "^12.3.8",
+    "simple-git-hooks": "^2.7.0"
+  }
+}
