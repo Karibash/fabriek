@@ -1,0 +1,49 @@
+{
+  "name": "@fabriek/core",
+  "version": "1.0.0",
+  "description": "Simple and extensible object factory.",
+  "main": "dist/fabriek-core.cjs.js",
+  "module": "dist/fabriek-core.esm.js",
+  "unpkg": "dist/fabriek-core.umd.min.js",
+  "jsdelivr": "dist/fabriek-core.umd.min.js",
+  "umd:main": "dist/fabriek-core.umd.min.js",
+  "types": "dist/fabriek-core.cjs.d.ts",
+  "browser": {
+    "./dist/fabriek-core.cjs.js": "./dist/fabriek-core.browser.cjs.js",
+    "./dist/fabriek-core.esm.js": "./dist/fabriek-core.browser.esm.js"
+  },
+  "files": [
+    "src",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "typescript",
+    "factory",
+    "simple",
+    "extensible"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karibash/fabriek.git"
+  },
+  "author": "Karibash",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Karibash/fabriek/issues"
+  },
+  "homepage": "https://github.com/Karibash/fabriek/tree/main/packages/core",
+  "dependencies": {
+    "@babel/runtime": "^7.15.4"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "preconstruct": {
+    "umdName": "fabriek"
+  }
+}
