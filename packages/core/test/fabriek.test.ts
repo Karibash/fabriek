@@ -34,6 +34,19 @@ describe('@fabriek/core/fabriek', () => {
     expect(factory.mock({ value: 2, nested: { value: 2 } })).toEqual({ value: 2, nested: { value: 2 } });
   });
 
+  it('should be able specify a partial default value', () => {
+    const factory = fabriek({
+      mock: () => ({
+        value: 1,
+        nested: {
+          value: 1,
+          mock: 1,
+        },
+      }),
+    });
+    expect(factory.mock({ nested: { mock: 2 } })).toEqual({ value: 1, nested: { value: 1, mock: 2 } });
+  });
+
   it('should be return same value each time for static builder', () => {
     const factory = fabriek({ mock });
     expect(factory.mock()).toEqual(factory.mock());

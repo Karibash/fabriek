@@ -22,6 +22,14 @@ describe('@fabriek/core/build', () => {
     expect(build(builder, { value: 2, nested: { value: 2 } })).toEqual({ value: 2, nested: { value: 2 } });
   });
 
+  it('should be able specify a partial default value', () => {
+    const builder: Builder<Mock & { nested: { mock: number } }> = (): Mock & { nested: { mock: number } } => ({
+      value: 1,
+      nested: { value: 1, mock: 1 },
+    });
+    expect(build(builder, { nested: { mock: 2 } })).toEqual({ value: 1, nested: { value: 1, mock: 2 } });
+  });
+
   it('should be return same value each time for static builder', () => {
     const builder: Builder<Mock> = (): Mock => ({ value: 1, nested: { value: 1 } });
     expect(build(builder)).toEqual(build(builder));

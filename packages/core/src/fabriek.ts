@@ -1,7 +1,7 @@
-import { build, BuilderOutput, BuilderRecord } from './build';
+import { build, BuilderDefaults, BuilderOutput, BuilderRecord } from './build';
 
 export type Fabriek<T extends BuilderRecord> = {
-  [Key in keyof T]: (defaults?: Partial<BuilderOutput<T[Key]>>) => BuilderOutput<T[Key]>;
+  [Key in keyof T]: (defaults?: BuilderDefaults<BuilderOutput<T[Key]>>) => BuilderOutput<T[Key]>;
 };
 
 export type MiddlewareContext = {
@@ -24,7 +24,7 @@ export const fabriek = <T extends BuilderRecord>(builders: T, middlewares?: Midd
   };
 
   return Object.entries(builders).reduce<Record<string, unknown>>((previous, [key, value]) => {
-    previous[key] = (defaults?: Partial<BuilderOutput<typeof value>>) => {
+    previous[key] = (defaults?: BuilderDefaults<BuilderOutput<typeof value>>) => {
       return consumer(context => build(builders[context.key], context.defaults))({ key, defaults });
     };
     return previous;
