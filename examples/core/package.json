@@ -1,0 +1,17 @@
+{
+  "name": "fabriek-core-example",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@fabriek/core": "^1.0.0",
+    "@faker-js/faker": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.25",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
