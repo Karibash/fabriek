@@ -1,5 +1,5 @@
 import { build, Builder, fabriek } from '@fabriek/core';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 type User = {
   id: string;

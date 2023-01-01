@@ -1,4 +1,6 @@
-import { Builder, fabriek, Middleware } from '@fabriek/core';
+import { fabriek } from '@fabriek/core';
+
+import type { Builder, Middleware } from '@fabriek/core';
 
 type Mock = {
   value: number;
@@ -90,10 +92,10 @@ describe('@fabriek/core/fabriek', () => {
     ];
 
     fabriek({ mock }, middlewares).mock();
-    expect(fn.mock.calls[0][0]).toBe(1);
-    expect(fn.mock.calls[1][0]).toBe(2);
-    expect(fn.mock.calls[2][0]).toBe(3);
-    expect(fn.mock.calls[3][0]).toBe(4);
+    expect(fn.mock.calls[0]).toEqual([1]);
+    expect(fn.mock.calls[1]).toEqual([2]);
+    expect(fn.mock.calls[2]).toEqual([3]);
+    expect(fn.mock.calls[3]).toEqual([4]);
   });
 
   it('should be able to rewrite the return value with middleware', () => {
@@ -113,7 +115,7 @@ describe('@fabriek/core/fabriek', () => {
     ];
 
     fabriek({ mock }, middlewares).mock();
-    expect(fn.mock.calls[0][0]).toEqual({ value: 1, nested: { value: 1 } });
-    expect(fn.mock.calls[1][0]).toEqual({ value: 2, nested: { value: 2 } });
+    expect(fn.mock.calls[0]).toEqual([{ value: 1, nested: { value: 1 } }]);
+    expect(fn.mock.calls[1]).toEqual([{ value: 2, nested: { value: 2 } }]);
   });
 });
