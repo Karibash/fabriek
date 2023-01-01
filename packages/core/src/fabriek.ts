@@ -1,4 +1,6 @@
-import { build, BuilderDefaults, BuilderOutput, BuilderRecord } from './build';
+import { build } from './build';
+
+import type { BuilderDefaults, BuilderOutput, BuilderRecord } from './build';
 
 export type Fabriek<T extends BuilderRecord> = {
   [Key in keyof T]: (defaults?: BuilderDefaults<BuilderOutput<T[Key]>>) => BuilderOutput<T[Key]>;

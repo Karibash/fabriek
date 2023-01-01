@@ -1,4 +1,6 @@
-import { build, Builder } from '@fabriek/core';
+import { build } from '@fabriek/core';
+
+import type { Builder } from '@fabriek/core';
 
 type Mock = {
   value: number;
